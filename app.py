@@ -36,3 +36,39 @@ plt.pie(valores_perdidos, labels=produtos, autopct='%1.1f%%', startangle=140,
 plt.title('Participação das Perdas por Produto (em R$)')
 plt.axis('equal')
 plt.show()
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Dados já calculados
+produtos = ['Arroz', 'Feijão', 'Carne Bovina', 'Leite', 'Frutas']
+lucros = [Arroz, Feijao, Carne_Bovina, Leite, Frutas]
+valores_perdidos = [Arroz_p, Feijao_p, Carne_Bovina_p, Leite_p, Frutas_p]
+
+# ---------- 1. Gráfico de Barras - Lucro por produto ----------
+plt.figure(figsize=(8, 6))
+plt.bar(produtos, lucros, color='#4daf4a')
+plt.title('Lucro Total por Produto (em R$)')
+plt.ylabel('Lucro (R$)')
+plt.show()
+
+# ---------- 2. Barras Horizontais - Perda por produto ----------
+plt.figure(figsize=(8, 6))
+plt.barh(produtos, valores_perdidos, color='#e41a1c')
+plt.title('Perdas por Produto (em R$)')
+plt.xlabel('Perdas (R$)')
+plt.show()
+
+# ---------- 3. Gráfico combinado - Lucro vs Perda ----------
+x = np.arange(len(produtos))
+largura = 0.35
+
+plt.figure(figsize=(10, 6))
+plt.bar(x - largura/2, lucros, largura, label='Lucro', color='#377eb8')
+plt.bar(x + largura/2, valores_perdidos, largura, label='Perda', color='#ff7f00')
+
+plt.xticks(x, produtos)
+plt.ylabel('Valores (R$)')
+plt.title('Comparação: Lucro x Perdas por Produto')
+plt.legend()
+plt.show()
